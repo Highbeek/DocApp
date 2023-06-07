@@ -7,7 +7,7 @@ The Doctors Appointment App aims to simplify the process of scheduling appointme
 ## Features
 
 - **Navigation**: Users can navigate between different screens/pages of the app using the Expo Router navigation system.
-- **Page Screens**: The app includes multiple screens/pages to simulate different sections of the Tesla mobile app, such as vehicle information, controls, settings, etc.
+- **Page Screens**: The app includes multiple screens/pages to simulate different sections of the doc app, such as doctors, user, appointment and search page.
 - **UI Elements**: The UI elements used in the app resemble the design and style of the Tesla app, providing a familiar and intuitive user experience.
 
 ## Installation
@@ -23,7 +23,7 @@ To run the Tesla Mobile App Clone locally on your development environment, follo
 
 - React Native: The core framework for building the mobile app, providing a cross-platform development environment.
 - Expo: A set of tools and services for developing and deploying React Native apps more easily.
-- Expo Router: A navigation library for handling app navigation and routing in the Tesla Mobile App Clone.
+- Expo Router: A navigation library for handling app navigation and routing in the Doc App.
 
 
 ## Credits
