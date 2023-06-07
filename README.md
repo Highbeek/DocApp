@@ -28,3 +28,7 @@ To run the Tesla Mobile App Clone locally on your development environment, follo
 
 ## Credits
 This project was designed and developed by Rifayet Uday.
+
+## Feedback and Contributions
+
+Feel free to provide feedback or suggestions for improvements. Contributions to the project are also welcome! Please create an issue or submit a pull request if you would like to contribute.
