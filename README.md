@@ -28,6 +28,7 @@ To run the Tesla Mobile App Clone locally on your development environment, follo
 
 ## Credits
 This project was designed and developed by Rifayet Uday.
+Link:https://dribbble.com/shots/21651502-Doctor-Appointment-App-2
 
 ## Feedback and Contributions
 
