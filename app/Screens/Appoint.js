@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Image, Text, role } from "react-native";
+import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import { DocAppointment } from "../Constants";
 import DateComponent from "../components/Date";
+import { format, isToday } from "date-fns";
 import {
   Octicons,
   SimpleLineIcons,
@@ -10,37 +11,40 @@ import {
 } from "@expo/vector-icons";
 
 const Appoint = () => {
+  const currentDate = new Date();
   return (
     <View style={styles.container}>
       {DocAppointment.slice(0, 1).map(({ img, uid, name, role, time }) => (
         <View key={uid} style={styles.appointContainer}>
-          <View style={styles.imgCon}>
-            <View style={styles.imageWrapper}>
-              <Image source={img} resizeMode="cover" style={styles.img} />
+          <View style={styles.appointImgCon}>
+            <View style={styles.appointImageWrapper}>
+              <Image
+                source={img}
+                resizeMode="cover"
+                style={styles.appointImg}
+              />
             </View>
           </View>
-          <View style={styles.doc}>
-            <Text style={styles.docName}>{name} </Text>
-            <Text style={styles.docRole}>{role} </Text>
+          <View style={styles.appointDoc}>
+            <Text style={styles.appointDocName}>{name}</Text>
+            <Text style={styles.appointDocRole}>{role}</Text>
           </View>
-          <View style={styles.appointment}>
+          <View style={styles.appointDetails}>
             <View>
-              <Text style={{ fontWeight: "700", fontSize: 24 }}>
-                Appointment
-              </Text>
+              <Text style={styles.appointmentTitle}>Appointment</Text>
               <View style={{ flexDirection: "row", gap: 6 }}>
                 <SimpleLineIcons name="clock" size={12} color="black" />
                 <Text>{time}</Text>
               </View>
             </View>
             <View style={{ flexDirection: "row" }}>
-              <Text>January 2023</Text>
+              <Text>{format(currentDate, "MMMM yyyy")}</Text>
               <Entypo name="select-arrows" size={12} color="black" />
             </View>
           </View>
-          <View>
+          <ScrollView scrollEnabled showsVerticalScrollIndicator={false}>
             <DateComponent />
-          </View>
+          </ScrollView>
         </View>
       ))}
     </View>
@@ -57,36 +61,45 @@ const styles = StyleSheet.create({
   appointContainer: {
     paddingHorizontal: 20,
   },
-  imgCon: {
+  appointImgCon: {
     height: 100,
     width: "100%",
     alignItems: "center",
     position: "relative",
   },
-  imageWrapper: {
+  appointImageWrapper: {
     overflow: "hidden",
     borderRadius: 50,
     width: 100,
     height: 100,
   },
-  img: {
+  appointImg: {
     width: "100%",
     height: "100%",
     resizeMode: "cover",
     backgroundColor: "#e7ebee",
   },
-  doc: {
+  appointDoc: {
     alignItems: "center",
   },
-  docName: {
+  appointDocName: {
     fontSize: 24,
-    fontWeight: 700,
+    fontWeight: "700",
   },
-  appointment: {
+  appointDocRole: {
+    // Added this style
+    fontSize: 16,
+    fontWeight: "500",
+  },
+  appointDetails: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 10,
-    marginBottom:10
+    marginBottom: 10,
+  },
+  appointmentTitle: {
+    fontWeight: "700",
+    fontSize: 24,
   },
 });
