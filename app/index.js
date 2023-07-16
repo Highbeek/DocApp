@@ -7,36 +7,39 @@ import Doc from "./Screens/Doc";
 import Appoint from "./Screens/Appoint";
 import Search from "./Screens/Search";
 import BottomNavigation from "./navigation/BottomNavigation";
+import DoctorsContextProvider from "./hook/docsContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function Page() {
   return (
-    <View style={styles.container}>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={User}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Search"
-          component={Search}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Doc"
-          component={Doc}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Appoint"
-          component={Appoint}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-      <BottomNavigation />
-    </View>
+    <DoctorsContextProvider>
+      <View style={styles.container}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={User}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Search"
+            component={Search}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Doc"
+            component={Doc}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Appoint"
+            component={Appoint}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+        <BottomNavigation />
+      </View>
+    </DoctorsContextProvider>
   );
 }
 

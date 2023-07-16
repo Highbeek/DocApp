@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 import { DocAppointment } from "../Constants";
 import DateComponent from "../components/Date";
@@ -9,44 +9,56 @@ import {
   Entypo,
   AntDesign,
 } from "@expo/vector-icons";
+import { DoctorsContext } from "../hook/docsContext";
 
 const Appoint = () => {
+  const { selectedDoc } = useContext(DoctorsContext);
+
   const currentDate = new Date();
+  const { img, name, role, time } = selectedDoc || {};
+
+  const defaultImageSource =
+    "https://media.istockphoto.com/id/981306794/vector/default-placeholder-doctor-half-length-portrait.jpg?s=612x612&w=0&k=20&c=Mo2O-4kvF02A18nGleF-an5xY6heTJPh0By5A-naf3g=";
+
   return (
     <View style={styles.container}>
-      {DocAppointment.slice(0, 1).map(({ img, uid, name, role, time }) => (
-        <View key={uid} style={styles.appointContainer}>
-          <View style={styles.appointImgCon}>
-            <View style={styles.appointImageWrapper}>
-              <Image
-                source={img}
-                resizeMode="cover"
-                style={styles.appointImg}
-              />
-            </View>
+      <View style={styles.appointContainer}>
+        <View style={styles.appointImgCon}>
+          <View style={styles.appointImageWrapper}>
+            <Image
+              source={{
+                uri: img
+                  ? img
+                  : "https://media.istockphoto.com/id/981306794/vector/default-placeholder-doctor-half-length-portrait.jpg?s=612x612&w=0&k=20&c=Mo2O-4kvF02A18nGleF-an5xY6heTJPh0By5A-naf3g=",
+              }}
+              resizeMode="cover"
+              style={styles.appointImg}
+            />
           </View>
-          <View style={styles.appointDoc}>
-            <Text style={styles.appointDocName}>{name}</Text>
-            <Text style={styles.appointDocRole}>{role}</Text>
-          </View>
-          <View style={styles.appointDetails}>
-            <View>
-              <Text style={styles.appointmentTitle}>Appointment</Text>
-              <View style={{ flexDirection: "row", gap: 6 }}>
-                <SimpleLineIcons name="clock" size={12} color="black" />
-                <Text>{time}</Text>
-              </View>
-            </View>
-            <View style={{ flexDirection: "row" }}>
-              <Text>{format(currentDate, "MMMM yyyy")}</Text>
-              <Entypo name="select-arrows" size={12} color="black" />
-            </View>
-          </View>
-          <ScrollView scrollEnabled showsVerticalScrollIndicator={false}>
-            <DateComponent />
-          </ScrollView>
         </View>
-      ))}
+        <View style={styles.appointDoc}>
+          <Text style={styles.appointDocName}>
+            {name || "No doctor selected"}
+          </Text>
+          <Text style={styles.appointDocRole}>{role || "Role"}</Text>
+        </View>
+        <View style={styles.appointDetails}>
+          <View>
+            <Text style={styles.appointmentTitle}>Appointment</Text>
+            <View style={{ flexDirection: "row", gap: 6 }}>
+              <SimpleLineIcons name="clock" size={12} color="black" />
+              <Text>{time}</Text>
+            </View>
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <Text>{format(currentDate, "MMMM yyyy")}</Text>
+            <Entypo name="select-arrows" size={12} color="black" />
+          </View>
+        </View>
+        <ScrollView scrollEnabled showsVerticalScrollIndicator={false}>
+          <DateComponent />
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -87,7 +99,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   appointDocRole: {
-    // Added this style
     fontSize: 16,
     fontWeight: "500",
   },
@@ -101,5 +112,22 @@ const styles = StyleSheet.create({
   appointmentTitle: {
     fontWeight: "700",
     fontSize: 24,
+  },
+  noDoctorContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  noDoctorImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+  },
+  noDoctorText: {
+    fontSize: 16,
+    fontWeight: "500",
+    textAlign: "center",
+    marginHorizontal: 20,
+    marginTop: 20,
   },
 });

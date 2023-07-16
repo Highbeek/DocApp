@@ -4,7 +4,6 @@ import { StyleSheet } from 'react-native'
 
 
 export const styles = StyleSheet.create({
-
   container: {
     flex: 1,
   },
@@ -55,6 +54,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 10,
     fontSize: 16,
+  },
+
+  searchContainer:{
+    marginHorizontal:10
   },
   searchIcon: {
     marginLeft: 10,
@@ -119,7 +122,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 6,
   },
-   
+
   dateContain: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -171,6 +174,7 @@ export const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  
-  
+  selectedDoctor: {
+    backgroundColor: "#2f786d",
+  },
 });

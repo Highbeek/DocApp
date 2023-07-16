@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -14,21 +14,21 @@ import { MaterialIcons, AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import { services } from "../Constants";
 import Services from "../components/Services";
-import { DocAppointment } from "../Constants";
+import { DocAppointment } from "../Constants"
 import { useNavigation } from "@react-navigation/native";
 import DocList from "../components/docList";
 import { useRouter } from "expo-router";
 import { styles } from "../styles.js/styles";
+import { DoctorsContext } from "../hook/docsContext";
 
 const User = () => {
-  
-  const navigation = useNavigation();
-
+  const navigation = useNavigation
+ const { docAppointment, selectedDoc } = useContext(DoctorsContext);
   const navigateToDoc = () => {
     navigation.navigate("Doc");
   };
   const navigateToAppoint = () => {
-    navigation.navigate("Appoint");
+    navigation.navigate("Appoint"); 
   };
   const navigateToSearch = () => {
     navigation.navigate("Search");
@@ -70,16 +70,18 @@ const User = () => {
           />
         </View>
       </View>
-      <View style={styles.service}>
-        <Text style={styles.serviceText}>Services</Text>
-        <FlatList
-          horizontal
-          data={services}
-          renderItem={({ item }) => <Services item={item} />}
-          style={styles.list}
-        />
-      </View>
-      <DocList />
+      <ScrollView>
+        <View style={styles.service}>
+          <Text style={styles.serviceText}>Services</Text>
+          <FlatList
+            horizontal
+            data={services}
+            renderItem={({ item }) => <Services item={item} />}
+            style={styles.list}
+          />
+        </View>
+        <DocList showHeads={true} randomize={true} />
+      </ScrollView>
     </View>
   );
 };
