@@ -5,6 +5,7 @@ export const DoctorsContext = createContext();
 
 const DoctorsContextProvider = ({ children }) => {
   const [selectedDoc, setSelectedDoc] = useState(null);
+  console.log("Selected Doctor:", selectedDoc);
 
   const handleDoctor = (doc) => {
     setSelectedDoc(doc);

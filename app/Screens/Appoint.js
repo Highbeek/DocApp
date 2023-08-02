@@ -20,18 +20,15 @@ const Appoint = () => {
   const defaultImageSource =
     "https://media.istockphoto.com/id/981306794/vector/default-placeholder-doctor-half-length-portrait.jpg?s=612x612&w=0&k=20&c=Mo2O-4kvF02A18nGleF-an5xY6heTJPh0By5A-naf3g=";
 
+  const imageUrl = img ? img : defaultImageSource;
   return (
     <View style={styles.container}>
       <View style={styles.appointContainer}>
         <View style={styles.appointImgCon}>
           <View style={styles.appointImageWrapper}>
             <Image
-              source={{
-                uri: img
-                  ? img
-                  : "https://media.istockphoto.com/id/981306794/vector/default-placeholder-doctor-half-length-portrait.jpg?s=612x612&w=0&k=20&c=Mo2O-4kvF02A18nGleF-an5xY6heTJPh0By5A-naf3g=",
-              }}
-              resizeMode="cover"
+              source={imageUrl}
+              resizeMode="contain"
               style={styles.appointImg}
             />
           </View>

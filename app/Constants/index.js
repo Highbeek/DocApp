@@ -6,7 +6,14 @@ import {
   FontAwesome,
 } from "@expo/vector-icons";
 <EvilIcons name="star" size={24} color="black" />;
-import { kim, ford, emily,mike,sophia } from "../assets";
+import { kim, ford, emily, mike, sophia } from "../assets/index";
+const images = {
+  kim,
+  sophia,
+  emily,
+  ford,
+  mike,
+};
 
 export const services = [
   {
@@ -47,7 +54,7 @@ export const DocAppointment = [
     ),
     rate: 4.62,
     time: "4:00 PM - 8:00PM",
-    img: kim,
+    img: images.kim,
     uid: 1,
     about:
       "A competent ENT Surgeon practicing for the past 13 years and have a wide range of experience in treating patients with all kinds of ENT issues. Listens to and addresses all of the patients concerns and clearly explains the course of treatment.",
@@ -66,7 +73,7 @@ export const DocAppointment = [
     ),
     rate: 4.88,
     time: "10:00 AM - 12:00PM",
-    img: ford,
+    img: images.ford,
     uid: 2,
     about:
       "An experienced heart surgeon with 13 years of practice, adept at addressing patient concerns and explaining treatment plans.",
@@ -85,7 +92,7 @@ export const DocAppointment = [
     ),
     rate: 4.95,
     time: "9:00 AM - 1:00 PM",
-    img: emily,
+    img: images.emily,
     uid: 3,
     about:
       "A skilled dentist with expertise in various dental procedures. Provides personalized care and ensures patient comfort.",
@@ -104,7 +111,7 @@ export const DocAppointment = [
     ),
     rate: 4.9,
     time: "2:00 PM - 6:00 PM",
-    img: mike,
+    img: images.mike,
     uid: 4,
     about:
       "Highly experienced orthopedic surgeon specializing in bone and joint surgeries. Dedicated to delivering excellent results and improving patients' quality of life.",
@@ -123,7 +130,7 @@ export const DocAppointment = [
     ),
     rate: 4.75,
     time: "10:00 AM - 4:00 PM",
-    img: sophia,
+    img: images.sophia,
     uid: 5,
     about:
       "Accomplished dermatologist offering comprehensive skincare treatments. Utilizes advanced techniques to address various skin conditions and enhance patients' appearance.",

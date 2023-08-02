@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingTop: 50,
+    marginTop:50
   },
   rating: {
     flexDirection: "row",
@@ -186,6 +187,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     left: 20,
+    top:50
   },
   backText: {
     marginLeft: 10,
